@@ -1,0 +1,39 @@
+<h2>Users Component Loaded</h2>
+
+<div class="container">
+<ul class="list-unstyled">
+<li class="well">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3">
+
+            <app-user-image 
+                (childEvent)="moreInfo($event)"
+                [user]="user"></app-user-image>
+            <!-- <img [src]="user.image">
+            <button class="btn btn-info btn-sm" (click)="moreInfo(user)">More Info</button> -->
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-9">
+
+            <app-user-info [user]="user">
+                <header>Header Info</header>
+                <footer>Footer Info</footer>
+            </app-user-info>
+
+
+            <!-- <h2>
+                {{ user.firstName }} {{ user.lastName }}
+            </h2>
+            <p> Income : <span [innerHTML]="user.income"></span></p>
+            <p> Date of Bith : {{ user.dob }}</p>
+            <em>
+                Total votes : {{ user.vote}}
+                <input type="number" [value]="user.vote" (change)="user.vote = $event.target.value">
+                <input type="number" [(ngModel)]="user.vote">
+            </em> -->
+        </div>
+    </div>
+
+
+</li>
+</ul>
+</div>

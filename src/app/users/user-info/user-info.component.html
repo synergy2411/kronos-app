@@ -1,0 +1,14 @@
+<ng-content select = "header"></ng-content>
+
+<h2>
+  {{ user.firstName }} {{ user.lastName }}
+</h2>
+<p> Income : <span [innerHTML]="user.income"></span></p>
+<p> Date of Bith : {{ user.dob }}</p>
+<em>
+  Total votes : {{ user.vote}}
+  <input type="number" [value]="user.vote" (change)="user.vote = $event.target.value">
+  <input type="number" [(ngModel)]="user.vote">
+</em>
+
+<ng-content select = "footer"></ng-content>
