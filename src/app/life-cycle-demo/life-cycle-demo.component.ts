@@ -8,7 +8,7 @@ import { Component, OnInit, OnChanges, AfterContentInit, AfterContentChecked, Do
 export class LifeCycleDemoComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked, DoCheck, AfterViewChecked, AfterViewInit, OnDestroy {
 
   @Input('title') title : string;
-  constructor() { }
+  constructor() { console.log("constructor")}
 
   ngOnInit() {console.log("ngOnInit")}
   ngAfterContentChecked(){console.log("ngAfterContentChecked")}

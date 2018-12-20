@@ -2,10 +2,12 @@
 
 <div class="container">
 <ul class="list-unstyled">
-<li class="well">
+<li class="well" *ngFor="let user of users; index as i;first as isFirst; odd as isOdd">
     <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-3">
-
+            <!-- {{i}} <br>
+            is this First : {{ isFirst }}
+            is this Odd : {{ isOdd }} -->
             <app-user-image 
                 (childEvent)="moreInfo($event)"
                 [user]="user"></app-user-image>
@@ -36,4 +38,12 @@
 
 </li>
 </ul>
+
+<!-- <div [ngSwitch]="Expr">
+    <div *ngSwitchCase="case1">Output 1</div>
+    <div *ngSwitchCase="">Output 1</div>
+    <div *ngSwitchCase="">Output 1</div>
+    <div *ngSwitchDefault>Output 1</div>
+</div> -->
+
 </div>

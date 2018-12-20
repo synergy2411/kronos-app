@@ -1,10 +1,20 @@
 <ng-content select = "header"></ng-content>
 
-<h2>
-  {{ user.firstName }} {{ user.lastName }}
+<h2 app-highlight [defaultColor]="myColor">
+  {{ user.firstName | uppercase }} {{ user.lastName | uppercase }}
 </h2>
-<p> Income : <span [innerHTML]="user.income"></span></p>
-<p> Date of Bith : {{ user.dob }}</p>
+<p *ngIf="user.isWorking; else ElseTemplate"> 
+    Income : <span [innerHTML]="user.income | currency : 'INR' "></span></p>
+
+<!-- <p *appUnless="!user.isWorking">AppUnless Income : {{ user.income }}</p> -->
+
+<!-- Desugar ngIF -->
+<!-- <ng-template [ngIf]="user.isWorking">
+    <p> Income : <span [innerHTML]="user.income"></span></p>
+</ng-template> -->
+
+<p [ngClass]="dynamicClass"> Date of Bith : {{ user.dob  | date : 'MM-dd-yyyy' }}</p>
+<button (click)="onToggle()" class="btn btn-default">Toggle</button>
 <em>
   Total votes : {{ user.vote}}
   <input type="number" [value]="user.vote" (change)="user.vote = $event.target.value">
@@ -12,3 +22,7 @@
 </em>
 
 <ng-content select = "footer"></ng-content>
+
+<ng-template #ElseTemplate>
+  <p>{{ user.firstName }} is not working now!</p>
+</ng-template>

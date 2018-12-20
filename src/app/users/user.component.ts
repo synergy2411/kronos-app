@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { USER_DATA } from './../model/mocks';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { IUser } from '../model/user.model';
 
 @Component({
@@ -8,20 +9,16 @@ import { IUser } from '../model/user.model';
     encapsulation : ViewEncapsulation.Emulated
 })
 
-export class UserComponent{
+export class UserComponent implements OnInit{
+
+    users : IUser[]; 
 
     moreInfo(user : IUser){
         alert(`${user.firstName} is working with ${user.company}`);
     }
 
-    user : IUser = {
-        firstName : "Bill",
-        lastName : "Gates",
-        income : 50000,
-        dob : new Date ("Dec 21, 1965"),
-        isWorking : true,
-        company : "Microsoft",
-        image : "assets/images/bill.jpg",
-        vote : 120
+    ngOnInit(){
+        this.users = USER_DATA;
     }
+  
 }

@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="text-primary text-center"> Login Form</h1>
+  <form #f = "ngForm">
+    <div class="form-group">
+      <label for="username">Username : </label>
+      <input type="email"  
+        name="username" 
+        class="form-control"
+        ngModel 
+        required 
+        email
+        minlength="6">
+    </div>
+    <div class="form-group">
+      <label for="password">Password : </label>
+      <input type="password" 
+        name="password" 
+        class="form-control"
+        ngModel required>
+    </div>
+    <button 
+      [disabled]="!f.valid"
+      class="btn btn-block btn-primary" 
+      (click)="onFormSubmit(f)">
+      Login
+    </button>
+  </form>
+</div>
