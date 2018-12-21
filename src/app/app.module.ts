@@ -1,7 +1,13 @@
+import { APP_ROUTES } from './app.routes';
+
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { EmployeeModule } from './employee/employee.module';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './users/user.component';
@@ -15,6 +21,13 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { FilterPipe } from './pipes/filter.pipe';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { DataService } from './services/data.service';
+import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
+import { AuthServiceService } from './services/auth-service.service';
+import { LoginGaurdService } from './services/login-gaurd.service';
+import { ProductComponent } from './product/product.component';
+import { OverviewComponent } from './product/overview/overview.component';
+import { SpecificationComponent } from './product/specification/specification.component';
 
 @NgModule({
   declarations: [
@@ -29,15 +42,22 @@ import { RegisterComponent } from './auth/register/register.component';
     NationalCodePipe,
     FilterPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ObservableDemoComponent,
+    ProductComponent,
+    OverviewComponent,
+    SpecificationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(APP_ROUTES),
+    EmployeeModule
   ],
-  providers: [],
+  providers: [ DataService, AuthServiceService, LoginGaurdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

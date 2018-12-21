@@ -1,3 +1,4 @@
+import { AuthServiceService } from './../../services/auth-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -8,6 +9,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class RegisterComponent  {
 
+  
   username = new FormControl('', [
     Validators.required,
     Validators.minLength(6)
@@ -25,15 +27,19 @@ export class RegisterComponent  {
   }
 
 
-  constructor(private fb : FormBuilder){
+  constructor(private fb : FormBuilder, private authService : AuthServiceService){
     this.registerForm = this.fb.group({
       username : this.username,
-      password : this.password
+      password: this.password
     });
   }
 
   onRegister(){
     console.log(this.registerForm);
+    this.authService.register(
+      this.registerForm.value.username,
+      this.registerForm.value.password
+      )
   }
 
 }

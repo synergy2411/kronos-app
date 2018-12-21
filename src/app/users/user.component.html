@@ -1,5 +1,7 @@
+<!-- {{ users | json }} -->
 <h2>Users Component Loaded</h2>
-
+Counter in User  : {{ dataService.counter }}
+<button class="btn btn-default" (click)="increase()">Increase</button>
 <div class="container">
 <ul class="list-unstyled">
 <li class="well" *ngFor="let user of users; index as i;first as isFirst; odd as isOdd">
